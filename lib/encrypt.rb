@@ -1,6 +1,7 @@
 require_relative 'key_gen'
 require_relative 'offset_gen'
 require_relative 'cipher_builder'
+require 'pry'
 
 class Encrypt
 
@@ -11,17 +12,18 @@ class Encrypt
     @key      = KeyGen.new.generate_key(5)
     # assign todays date in ddmmyy format as default offset
     @offset   = OffsetGen.new.generate_offset(4)
-    # generate cipher tables as instance variables
-    @a_cipher = CipherBuilder.new.create_table('A', @key.to_s, @offset.to_s)
-    @b_cipher = CipherBuilder.new.create_table('B', @key.to_s, @offset.to_s)
-    @c_cipher = CipherBuilder.new.create_table('C', @key.to_s, @offset.to_s)
-    @d_cipher = CipherBuilder.new.create_table('D', @key.to_s, @offset.to_s)
   end
 
   def encrypt(message, key=@key, offset=@offset)
-    char_map = gen_map
+    a_cipher = CipherBuilder.new.create_table('A', @key.to_s, @offset.to_s)
+    b_cipher = CipherBuilder.new.create_table('B', @key.to_s, @offset.to_s)
+    c_cipher = CipherBuilder.new.create_table('C', @key.to_s, @offset.to_s)
+    d_cipher = CipherBuilder.new.create_table('D', @key.to_s, @offset.to_s)
     # rotate A indices first, then B, etc.
     # Brainstorm way to check if index is ABC or D
+    # split array into 4 partitions, assign each partition to ABCD
+    # message = message.each_slice(4) { |a| p a }
+    binding.pry
   end
 
   def gen_map
