@@ -2,7 +2,7 @@ require_relative 'key_gen'
 
 class Encrypt
 
-  attr_accessor :key,
+  attr_accessor :key
 
   def initialize
     # assign random 5 digits to instance variable @key
