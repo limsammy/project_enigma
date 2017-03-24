@@ -5,7 +5,7 @@ class KeyGen
     @length = length
   end
 
-  def generate_key(length=@length)
-    rand(10 ** length)
+  def generate_key
+    rand(10 ** @length)
   end
 end
