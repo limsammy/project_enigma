@@ -22,8 +22,9 @@ class CipherBuilder
     end
   end
 
-  def create_table
-    table = Hash[@char_map.map { |x| [x,1] }]
-    binding.pry
+  def create_table(rotation_id, key, offset)
+    keys = @char_map
+    vals = @char_map.rotate(calculate_rotation(rotation_id, key, offset))
+    table = Hash[keys.zip(vals)]
   end
 end
