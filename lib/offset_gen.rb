@@ -1,6 +1,8 @@
 require 'Date'
 
 class OffsetGen
+  attr_accessor :length
+
   def initialize(length=4)
     @length = length
   end
