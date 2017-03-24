@@ -14,12 +14,9 @@ class Encrypt
 
   def encrypt(message, key=@key, offset=@offset)
     char_map = map
-
-    # create class that builds HASH cipher tables for each ABCD rotation
-    # create method(or class?) to calculate rotation
   end
 
-  def map
+  def gen_map
     [*('a'..'z')]+[*('0'..'9')]+[' ', '.', ',']
   end
 end
