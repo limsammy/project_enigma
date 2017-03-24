@@ -6,6 +6,6 @@ class KeyGen
   end
 
   def generate_key(length=@length)
-    rand(10 ** @length)
+    key = rand(10 ** @length)
   end
 end

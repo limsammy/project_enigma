@@ -11,7 +11,7 @@ class OffsetGen
     date = Date.today.strftime('%d%m%y').to_s.to_i
     offset = (date ** 2).to_s[-4..-1].to_i
     if offset.to_s.length != 4
-      offset = (date.to_i * date.to_i).to_s[-4..-1]
+      offset = '0' + offset.to_s
     end
     offset
   end
