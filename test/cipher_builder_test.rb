@@ -1,7 +1,8 @@
-gem 'minitest'
+require 'simplecov'
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/cipher_builder'
+SimpleCov.start
 
 class CipherBuilderTest < Minitest::Test
   def test_char_map_is_assigned

@@ -1,7 +1,8 @@
-gem 'minitest'
+require 'simplecov'
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/encrypt'
+SimpleCov.start
 
 class EncryptTest < Minitest::Test
   def test_object_is_class_type
