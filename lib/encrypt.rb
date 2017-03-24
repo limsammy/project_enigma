@@ -3,7 +3,7 @@ require_relative 'offset_gen'
 
 class Encrypt
 
-  attr_accessor :key
+  attr_accessor :key, :offset
 
   def initialize
     # assign random 5 digits to instance variable @key
@@ -15,7 +15,7 @@ class Encrypt
   def encrypt(message, key=@key, offset=@offset)
     char_map = map
 
-    # create class that builds cipher tables
+    # create class that builds HASH cipher tables for each ABCD rotation
     # create method(or class?) to calculate rotation
   end
 
