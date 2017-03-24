@@ -32,6 +32,6 @@ class Encrypt
 
   def gen_map
     # creates charmap, an array including all those ranges
-    [*('a'..'z')]+[*('0'..'9')]+[' ', '.', ',']
+    [*('a'..'z')] + [*('0'..'9')] + [' ', '.', ',']
   end
 end
