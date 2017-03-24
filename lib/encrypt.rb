@@ -1,4 +1,5 @@
 require_relative 'key_gen'
+require_relative 'offset_gen'
 
 class Encrypt
 
@@ -6,7 +7,7 @@ class Encrypt
 
   def initialize
     # assign random 5 digits to instance variable @key
-    @key = KeyGen.generate_key(5)
+    @key = KeyGen.new.generate_key(5)
     # assign todays date in ddmmyy format as default offset
     @offset = OffsetGen.new.generate_offset(4)
   end
