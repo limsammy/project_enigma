@@ -27,4 +27,10 @@ class EncryptTest < Minitest::Test
 
     assert_equal 39, e.map.length
   end
+
+  def test_char_map_is_type_array
+    e = Encrypt.new
+
+    assert_instance_of Array, e.map
+  end
 end
