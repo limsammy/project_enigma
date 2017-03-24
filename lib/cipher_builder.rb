@@ -26,5 +26,6 @@ class CipherBuilder
     keys = @char_map
     vals = @char_map.rotate(calculate_rotation(rotation_id, key, offset))
     table = Hash[keys.zip(vals)]
+    table
   end
 end
