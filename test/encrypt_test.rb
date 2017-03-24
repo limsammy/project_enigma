@@ -21,4 +21,10 @@ class EncryptTest < Minitest::Test
 
     assert_equal 4, e.offset.to_s.length
   end
+
+  def test_char_map_is_39_chars_long
+    e = Encrypt.new
+
+    assert_equal 39, e.map.length
+  end
 end
