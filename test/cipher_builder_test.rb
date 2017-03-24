@@ -37,4 +37,11 @@ class CipherBuilderTest < Minitest::Test
 
     assert_equal 74, d_rotation
   end
+
+  def test_hash_keys_populated_w_charmap # delete later, pry accessor to check table
+    skip
+    b = CipherBuilder.new
+
+    b.create_table('A', '03165', '0489')
+  end
 end
