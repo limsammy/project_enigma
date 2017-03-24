@@ -15,4 +15,10 @@ class EncryptTest < Minitest::Test
 
     assert_equal 5, e.key.to_s.length
   end
+
+  def test_object_is_created_with_default_offset_length_4
+    e = Encrypt.new
+
+    assert_equal 4, e.offset.to_s.length
+  end
 end
