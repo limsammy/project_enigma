@@ -39,7 +39,7 @@ class CipherBuilderTest < Minitest::Test
   end
 
   def test_hash_keys_populated_w_charmap # delete later, pry accessor to check table
-    skip
+    # skip
     b = CipherBuilder.new
 
     b.create_table('A', '03165', '0489')
