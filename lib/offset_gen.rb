@@ -1,7 +1,7 @@
 require 'Date'
 
 class OffsetGen
-  def initialize(length)
+  def initialize(length=4)
     @length = length
   end
 
