@@ -38,6 +38,6 @@ class EncryptTest < Minitest::Test
   def test_encrypt_accessor_for_pry
     e = Encrypt.new
 
-    e.encrypt('this is a test message')
+    assert_instance_of String, e.encrypt('this is a test message')
   end
 end

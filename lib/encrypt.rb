@@ -8,7 +8,7 @@ class Encrypt
   attr_accessor :key, :offset
 
   def initialize
-    # assign random 5 digits to instance variable @key
+    # assign random 5 digits to instance variable ;@key
     @key      = KeyGen.new.generate_key(5)
     # assign todays date in ddmmyy format as default offset
     @offset   = OffsetGen.new.generate_offset(4)
@@ -35,8 +35,8 @@ class Encrypt
         end
       end
     end
-    final.join
-    binding.pry
+    return "Your encrypted message is '#{final.join}', encrypted with key: #{@key} and offset: #{@offset}"
+    # binding.pry
   end
 
   def gen_map
