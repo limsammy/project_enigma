@@ -35,7 +35,7 @@ class Encrypt
         end
       end
     end
-    final
+    final.join
     binding.pry
   end
 
