@@ -35,9 +35,9 @@ class EncryptTest < Minitest::Test
     assert_instance_of Array, e.gen_map
   end
 
-  # def test_encrypt_accessor_for_pry
-  #   e = Encrypt.new
-  #
-  #   e.encrypt('this is a test message')
-  # end
+  def test_encrypt_accessor_for_pry
+    e = Encrypt.new
+  
+    e.encrypt('this is a test message')
+  end
 end
