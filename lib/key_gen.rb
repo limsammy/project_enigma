@@ -1,3 +1,4 @@
+require 'pry'
 class KeyGen
   attr_accessor :length
 
@@ -12,4 +13,5 @@ class KeyGen
     end
     key.to_s
   end
+  
 end

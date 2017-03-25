@@ -20,18 +20,18 @@ class Encrypt
     b_cipher = CipherBuilder.new.create_table('B', @key.to_s, @offset.to_s)
     c_cipher = CipherBuilder.new.create_table('C', @key.to_s, @offset.to_s)
     d_cipher = CipherBuilder.new.create_table('D', @key.to_s, @offset.to_s)
-    final = ''
+    final = []
     message = message.chars.each_slice(4).to_a
     message.each do |chunk|
       chunk.each do |char|
         if chunk.index(char) == 0
-          final += a_cipher[char[0]].to_s
+          final << a_cipher[char].to_s
         elsif chunk.index(char) == 1
-          final += b_cipher[char[1]].to_s
+          final << b_cipher[char].to_s
         elsif chunk.index(char) == 2
-          final += c_cipher[char[2]].to_s
+          final << c_cipher[char].to_s
         elsif chunk.index(char) == 3
-          final += d_cipher[char[3]].to_s
+          final << d_cipher[char].to_s
         end
       end
     end
