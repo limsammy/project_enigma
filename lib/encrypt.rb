@@ -21,8 +21,7 @@ class Encrypt
     c_cipher = CipherBuilder.new.create_table('C', @key.to_s, @offset.to_s)
     d_cipher = CipherBuilder.new.create_table('D', @key.to_s, @offset.to_s)
     final = []
-    message = message.chars.each_slice(4).to_a
-    message.each do |chunk|
+    chunk(message).each do |chunk|
       chunk.each do |char|
         if chunk.index(char) == 0
           final << a_cipher[char].to_s
@@ -37,6 +36,10 @@ class Encrypt
     end
     return "Your encrypted message is '#{final.join}', encrypted with key: #{@key} and offset: #{@offset}"
     # binding.pry
+  end
+
+  def chunk(message)
+    message.chars.each_slice(4).to_a
   end
 
   def gen_map
