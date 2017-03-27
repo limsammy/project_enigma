@@ -16,7 +16,7 @@ class Encrypt
 
   def encrypt(message, key=@key, offset=@offset)
     cipher = CipherBuilder.new
-    cipher.chunk(message).each do |chunk|
+    cipher.chunk(message, 4).each do |chunk|
       chunk.each do |char|
         if chunk.index(char) == 0
           cipher.lookup('A', char, key, offset)

@@ -43,7 +43,7 @@ class CipherBuilder
     @final.join
   end
 
-  def chunk(message)
-    message.chars.each_slice(4).to_a
+  def chunk(message, chunks)
+    message.chars.each_slice(chunks).to_a
   end
 end
