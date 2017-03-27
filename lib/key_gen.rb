@@ -13,5 +13,5 @@ class KeyGen
     end
     key.to_s
   end
-  
+
 end
