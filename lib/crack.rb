@@ -39,18 +39,16 @@ class Crack
     cipher.chunk(message.reverse, 4).each do |chunk|
       chunk.each do |char|
         index = @char_map.index(char) + calc_difference(message)
+        index -= @char_map.count if index > @char_map.count
 
-        if index > @char_map.count
-          index -= @char_map.count
-        end
-
-        if chunk.index(char) == 0
+        case chunk.index(char)
+        when 0
           final << @char_map[index]
-        elsif chunk.index(char) == 1
+        when 1
           final << @char_map[index]
-        elsif chunk.index(char) == 2
+        when 2
           final << @char_map[index]
-        elsif chunk.index(char) == 3
+        when 3
           final << @char_map[index]
         end
       end
