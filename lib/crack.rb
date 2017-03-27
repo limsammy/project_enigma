@@ -1,59 +1,47 @@
 require_relative 'cipher_builder'
 require_relative 'offset_gen'
+require_relative 'decrypt'
 require 'pry'
 
 class Crack
   attr_reader :offset
 
   def initialize
-    @offset = OffsetGen.new.generate_offset(4)
     @char_map = Encrypt.new.gen_map
   end
 
   def crack(message, offset=@offset)
-    build_output(message)
-  end
-
-  def calc_difference(message)
-    chunked_message = CipherBuilder.new.chunk(message.reverse, 6)
-    # if message.length % 4 == 0
-      encrypted_index = @char_map.index(chunked_message[0][1])
-      difference = 37 - encrypted_index
-    # elsif message.length % 4 == 1
-    #   encrypted_index = @char_map.index(chunked_message[0][2])
-    #   difference = @char_map.index('.') - encrypted_index
-    # elsif message.length % 4 == 2
-    #   encrypted_index = @char_map.index(chunked_message[0][3])
-    #   difference = @char_map.index('.') - encrypted_index
-    # elsif message.length % 4 == 3
-    #   encrypted_index = @char_map.index(chunked_message[0][4])
-    #   difference = @char_map.index('.') - encrypted_index
-    # end
-    # difference
-    # binding.pry
-  end
-
-  def build_output(message)
-    cipher = CipherBuilder.new
     final = []
-    cipher.chunk(message.reverse, 4).each do |chunk|
-      chunk.each do |char|
-        index = @char_map.index(char) + calc_difference(message)
-        index -= @char_map.count if index > @char_map.count
-
-        case chunk.index(char)
-        when 0
-          final << @char_map[index]
-        when 1
-          final << @char_map[index]
-        when 2
-          final << @char_map[index]
-        when 3
-          final << @char_map[index]
-        end
+    message.chars.map!.with_index do |char, index|
+      case index % 4
+      when 0
+        rotation = @char_map.index(char) - rotation(message, -4)
+        decrypted_char = @char_map.rotate(rotation).shift
+        final << decrypted_char
+      when 1
+        rotation = @char_map.index(char) - rotation(message, -3)
+        decrypted_char = @char_map.rotate(rotation).shift
+        final << decrypted_char
+      when 2
+        rotation = @char_map.index(char) - rotation(message, -2)
+        decrypted_char = @char_map.rotate(rotation).shift
+        final << decrypted_char
+      when 3
+        rotation = @char_map.index(char) - rotation(message, -1)
+        decrypted_char = @char_map.rotate(rotation).shift
+        final << decrypted_char
       end
     end
-      final.join.reverse
-      binding.pry
+    final.join
+  end
+
+  def rotation(message, rotation_id)
+    switch = message.length % 4
+    encrypted_char = message[rotation_id-switch]
+    given = '..end..'
+    decrypted_char = given[rotation_id-switch]
+    message_rotation = (@char_map.index(encrypted_char)) - (@char_map.index(decrypted_char))
+    message_rotation % 39
+    # binding.pry
   end
 end
