@@ -10,4 +10,9 @@ class CrackTest < Minitest::Test
 
     assert_instance_of Crack, crack
   end
+
+  def test_accessor_for_pry
+    c = Crack.new
+    c.crack('lz0etlzzhnlfflukff')
+  end
 end

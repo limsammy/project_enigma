@@ -16,20 +16,22 @@ class Encrypt
 
   def encrypt(message, key=@key, offset=@offset)
     cipher = CipherBuilder.new
-    cipher.chunk(message).each do |chunk|
+    final = []
+    cipher.chunk(message, 4).each do |chunk|
       chunk.each do |char|
         if chunk.index(char) == 0
-          cipher.lookup('A', char, key, offset)
+          final << cipher.lookup('A', char, key, offset)
         elsif chunk.index(char) == 1
-          cipher.lookup('A', char, key, offset)
+          final << cipher.lookup('A', char, key, offset)
         elsif chunk.index(char) == 2
-          cipher.lookup('A', char, key, offset)
+          final << cipher.lookup('A', char, key, offset)
         elsif chunk.index(char) == 3
-          cipher.lookup('A', char, key, offset)
+          final << cipher.lookup('A', char, key, offset)
         end
       end
+      final.join
     end
-    return "Your encrypted message is '#{cipher.final}', encrypted with key: #{@key} and offset: #{@offset}"
+    return "Your encrypted message is '#{final.join}', encrypted with key: #{@key} and offset: #{@offset}"
   end
 
   def gen_map
