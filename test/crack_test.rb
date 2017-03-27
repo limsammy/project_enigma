@@ -13,6 +13,6 @@ class CrackTest < Minitest::Test
 
   def test_accessor_for_pry
     c = Crack.new
-    c.crack('test message here..end..')
+    c.crack('lz0etlzzhnlfflukff')
   end
 end
