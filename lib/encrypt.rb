@@ -15,27 +15,21 @@ class Encrypt
   end
 
   def encrypt(message, key=@key, offset=@offset)
-    # generate cipher tables using CipherBuilder and create_table method
-    a_cipher = CipherBuilder.new.create_table('A', @key.to_s, @offset.to_s)
-    b_cipher = CipherBuilder.new.create_table('B', @key.to_s, @offset.to_s)
-    c_cipher = CipherBuilder.new.create_table('C', @key.to_s, @offset.to_s)
-    d_cipher = CipherBuilder.new.create_table('D', @key.to_s, @offset.to_s)
-    final = []
+    cipher = CipherBuilder.new
     chunk(message).each do |chunk|
       chunk.each do |char|
         if chunk.index(char) == 0
-          final << a_cipher[char].to_s
+          cipher.lookup('A', char, key, offset)
         elsif chunk.index(char) == 1
-          final << b_cipher[char].to_s
+          cipher.lookup('A', char, key, offset)
         elsif chunk.index(char) == 2
-          final << c_cipher[char].to_s
+          cipher.lookup('A', char, key, offset)
         elsif chunk.index(char) == 3
-          final << d_cipher[char].to_s
+          cipher.lookup('A', char, key, offset)
         end
       end
     end
-    return "Your encrypted message is '#{final.join}', encrypted with key: #{@key} and offset: #{@offset}"
-    # binding.pry
+    return "Your encrypted message is '#{cipher.final}', encrypted with key: #{@key} and offset: #{@offset}"
   end
 
   def chunk(message)
