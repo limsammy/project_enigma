@@ -42,4 +42,8 @@ class CipherBuilder
     end
     @final.join
   end
+
+  def chunk(message)
+    message.chars.each_slice(4).to_a
+  end
 end

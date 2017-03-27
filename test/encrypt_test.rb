@@ -40,10 +40,4 @@ class EncryptTest < Minitest::Test
 
     assert_instance_of String, e.encrypt('this is a test message')
   end
-
-  def test_chunk_method_returns_array
-    e = Encrypt.new
-
-    assert_instance_of Array, e.chunk("Test message")
-  end
 end

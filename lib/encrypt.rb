@@ -16,7 +16,7 @@ class Encrypt
 
   def encrypt(message, key=@key, offset=@offset)
     cipher = CipherBuilder.new
-    chunk(message).each do |chunk|
+    cipher.chunk(message).each do |chunk|
       chunk.each do |char|
         if chunk.index(char) == 0
           cipher.lookup('A', char, key, offset)
@@ -30,10 +30,6 @@ class Encrypt
       end
     end
     return "Your encrypted message is '#{cipher.final}', encrypted with key: #{@key} and offset: #{@offset}"
-  end
-
-  def chunk(message)
-    message.chars.each_slice(4).to_a
   end
 
   def gen_map

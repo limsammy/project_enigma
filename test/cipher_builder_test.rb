@@ -45,4 +45,10 @@ class CipherBuilderTest < Minitest::Test
 
     b.create_table('A', '03165', '0489')
   end
+
+  def test_chunk_method_returns_array
+    c = CipherBuilder.new
+
+    assert_instance_of Array, c.chunk("Test message")
+  end
 end
