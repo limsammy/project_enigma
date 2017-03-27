@@ -12,6 +12,7 @@ class Crack
 
   def crack(message, offset=@offset)
     message = CipherBuilder.new.chunk(message.reverse, 6)
+    known = message[0][1]
     binding.pry
   end
 end

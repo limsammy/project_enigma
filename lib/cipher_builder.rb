@@ -6,7 +6,6 @@ class CipherBuilder
 
   def initialize
     @char_map = Encrypt.new.gen_map
-    @final = []
   end
 
   def calculate_rotation(rotation_id, key, offset)
@@ -32,15 +31,14 @@ class CipherBuilder
 
   def lookup(rotation_id, character, key, offset)
     if rotation_id == 'A'
-      @final << create_table('A', key, offset)[character]
+      create_table('A', key, offset)[character]
     elsif rotation_id == 'B'
-      @final << create_table('B', key, offset)[character]
+      reate_table('B', key, offset)[character]
     elsif rotation_id == 'C'
-      @final << create_table('C', key, offset)[character]
+      create_table('C', key, offset)[character]
     elsif rotation_id == 'D'
-      @final << create_table('D', key, offset)[character]
+      create_table('D', key, offset)[character]
     end
-    @final.join
   end
 
   def chunk(message, chunks)
