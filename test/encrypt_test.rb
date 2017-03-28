@@ -36,8 +36,8 @@ class EncryptTest < Minitest::Test
   end
 
   def test_encrypt_accessor_for_pry
-    e = Encrypt.new
+    e = Encrypt.new("~/Users/sam/turing/1module/project_enigma/to_encrypt.txt")
 
-    assert_instance_of String, e.encrypt('this is a test message')
+    assert e.file_input
   end
 end
