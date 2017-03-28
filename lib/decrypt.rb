@@ -28,7 +28,7 @@ class Decrypt
       end
     end
     final.join
-    binding.pry
+    # binding.pry
   end
 
   def gen_map
