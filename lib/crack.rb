@@ -45,4 +45,13 @@ class Crack
     message_rotation % @char_map.count
     # binding.pry
   end
+
+  def file_crack(filename)
+    file = File.open(filename, "r").read
+    cracked = self.crack(file)
+    output = File.open('cracked.txt', 'w')
+    output.write(cracked)
+    output.close
+    puts "Succesfully cracked! Created file 'cracked.txt'"
+  end
 end
