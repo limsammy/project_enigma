@@ -8,6 +8,7 @@ class Crack
 
   def initialize
     @char_map = Encrypt.new.gen_map
+    @offset = OffsetGen.new.generate_offset
   end
 
   def crack(message, offset=@offset)
