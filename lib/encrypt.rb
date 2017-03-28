@@ -38,4 +38,13 @@ class Encrypt
     # creates charmap, an array including all those ranges
     [*('a'..'z')] + [*('0'..'9')] + [' ', '.', ',']
   end
+
+  def file_encrypt(filename)
+    file = File.open(filename, "r").read
+    encrypted = self.encrypt(file)
+    output = File.open('encrypted.txt', 'w')
+    output.write(encrypted)
+    output.close
+    puts "Created file 'encrypted.txt' with key #{@key} and offset #{@offset}"
+  end
 end
