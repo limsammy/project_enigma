@@ -41,7 +41,7 @@ class Crack
     given = '..end..'
     decrypted_char = given[rotation_id-switch]
     message_rotation = (@char_map.index(encrypted_char)) - (@char_map.index(decrypted_char))
-    message_rotation % 39
+    message_rotation % @char_map.count
     # binding.pry
   end
 end
