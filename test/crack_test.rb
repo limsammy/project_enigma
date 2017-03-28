@@ -15,4 +15,16 @@ class CrackTest < Minitest::Test
     c = Crack.new
     c.crack('lz0etlzzhnlfflukff')
   end
+
+  def test_rotation_can_get_correct_rotation
+    c = Crack.new
+
+    assert_equal 7, c.rotation('lz0etlzzhnlfflukff', -4)
+  end
+
+  def test_can_crack_message
+    c = Crack.new
+
+    assert_equal "test..end..", c.crack('yjxyddjsidd')
+  end
 end

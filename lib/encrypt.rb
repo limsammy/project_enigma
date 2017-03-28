@@ -22,11 +22,11 @@ class Encrypt
         if chunk.index(char) == 0
           final << cipher.lookup('A', char, key, offset)
         elsif chunk.index(char) == 1
-          final << cipher.lookup('A', char, key, offset)
+          final << cipher.lookup('B', char, key, offset)
         elsif chunk.index(char) == 2
-          final << cipher.lookup('A', char, key, offset)
+          final << cipher.lookup('C', char, key, offset)
         elsif chunk.index(char) == 3
-          final << cipher.lookup('A', char, key, offset)
+          final << cipher.lookup('D', char, key, offset)
         end
       end
       final.join
