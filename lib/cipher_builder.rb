@@ -41,6 +41,22 @@ class CipherBuilder
     end
   end
 
+  def lookup_key(rotation_id, character, key, offset)
+    if rotation_id == 'A'
+      table = create_table('A', key, offset)
+      table.key(character)
+    elsif rotation_id == 'B'
+      table = create_table('B', key, offset)
+      table.key(character)
+    elsif rotation_id == 'C'
+      table = create_table('C', key, offset)
+      table.key(character)
+    elsif rotation_id == 'D'
+      table = create_table('D', key, offset)
+      table.key(character)
+    end
+  end
+
   def chunk(message, chunks)
     message.chars.each_slice(chunks).to_a
   end
