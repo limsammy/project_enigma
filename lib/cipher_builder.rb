@@ -33,7 +33,7 @@ class CipherBuilder
     if rotation_id == 'A'
       create_table('A', key, offset)[character]
     elsif rotation_id == 'B'
-      reate_table('B', key, offset)[character]
+      create_table('B', key, offset)[character]
     elsif rotation_id == 'C'
       create_table('C', key, offset)[character]
     elsif rotation_id == 'D'

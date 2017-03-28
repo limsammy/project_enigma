@@ -49,6 +49,6 @@ class CipherBuilderTest < Minitest::Test
   def test_chunk_method_returns_array
     c = CipherBuilder.new
 
-    assert_instance_of Array, c.chunk("Test message")
+    assert_instance_of Array, c.chunk("Test message", 4)
   end
 end

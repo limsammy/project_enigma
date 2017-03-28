@@ -1,0 +1,6 @@
+require './test/encrypt_test'
+require './test/decrypt_test'
+require './test/crack_test'
+require './test/cipher_builder_test'
+require './test/key_gen_test'
+require './test/offset_gen_test'
