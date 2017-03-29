@@ -32,15 +32,19 @@ class Encrypt
         end
       end
     end
-    return "Your encrypted message is '#{final.join}', encrypted with key: #{@key} and offset: #{@offset}"
+    final.join
   end
 
-  def file_encrypt(filename)
-    file = File.open(filename, "r").read
+  def file_encrypt(input, output)
+    file = File.open(input, "r").read
     encrypted = self.encrypt(file)
-    output = File.open('encrypted.txt', 'w')
-    output.write(encrypted)
-    output.close
-    puts "Created file 'encrypted.txt' with key #{@key} and offset #{@offset}"
+    output_file = File.open(output, 'w')
+    output_file.write(encrypted)
+    output_file.close
+    puts "Created file #{output.to_s} with key #{@key} and offset #{@offset}"
   end
+end
+
+if __FILE__ == $0
+  Encrypt.new.file_encrypt(ARGV[0], ARGV[1])
 end
