@@ -45,13 +45,17 @@ class Crack
     message_rotation % @char_map.count
   end
 
-  def crack_file(filename)
-    file = File.open(filename, "r").read
+  def crack_file(input, output)
+    file = File.open(input, "r").read
     file = file.chomp
     cracked = self.crack(file)
-    output = File.open('cracked.txt', 'w')
-    output.write(cracked)
-    output.close
+    output_file = File.open(output, 'w')
+    output_file.write(cracked)
+    output_file.close
     puts "Created file 'cracked.txt'"
   end
+end
+
+if __FILE__ == $0
+  Crack.new.crack_file(ARGV.first, ARGV.last)
 end
