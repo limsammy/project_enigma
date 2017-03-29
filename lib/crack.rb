@@ -18,19 +18,19 @@ class Crack
       when 0
         rotation = @char_map.index(char) - rotation(message, -4)
         decrypted_char = @char_map.rotate(rotation).shift
-        final << decrypted_char
+        char = decrypted_char
       when 1
         rotation = @char_map.index(char) - rotation(message, -3)
         decrypted_char = @char_map.rotate(rotation).shift
-        final << decrypted_char
+        char = decrypted_char
       when 2
         rotation = @char_map.index(char) - rotation(message, -2)
         decrypted_char = @char_map.rotate(rotation).shift
-        final << decrypted_char
+        char = decrypted_char
       when 3
         rotation = @char_map.index(char) - rotation(message, -1)
         decrypted_char = @char_map.rotate(rotation).shift
-        final << decrypted_char
+        char = decrypted_char
       end
     end
     final.join

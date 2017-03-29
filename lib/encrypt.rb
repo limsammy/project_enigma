@@ -16,20 +16,22 @@ class Encrypt
 
   def encrypt(message, key=@key, offset=@offset)
     cipher = CipherBuilder.new
-    final = []
-    cipher.chunk(message, 4).each do |chunk|
-      chunk.each do |char|
-        if chunk.index(char) == 0
-          final << cipher.lookup('A', char, key, offset)
-        elsif chunk.index(char) == 1
-          final << cipher.lookup('B', char, key, offset)
-        elsif chunk.index(char) == 2
-          final << cipher.lookup('C', char, key, offset)
-        elsif chunk.index(char) == 3
-          final << cipher.lookup('D', char, key, offset)
+    final = cipher.chunk(message, 4).map!.each do |chunk|
+      chunk.map!.with_index do |char, index|
+        if index == 0
+          encrypted_char = cipher.lookup('B', char, key, offset)
+          char = encrypted_char
+        elsif index == 1
+          encrypted_char = cipher.lookup('B', char, key, offset)
+          char = encrypted_char
+        elsif index == 2
+          encrypted_char = cipher.lookup('C', char, key, offset)
+          char = encrypted_char
+        elsif index == 3
+          encrypted_char = cipher.lookup('D', char, key, offset)
+          char = encrypted_char
         end
       end
-      final.join
     end
     return "Your encrypted message is '#{final.join}', encrypted with key: #{@key} and offset: #{@offset}"
   end
