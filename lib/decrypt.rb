@@ -29,12 +29,16 @@ class Decrypt
     final.join
   end
 
-  def file_decrypt(filename, key, offset)
-    file = File.open(filename, "r").read
+  def file_decrypt(input, output, key, offset)
+    file = File.open(input, "r").read
     decrypted = self.decrypt(file, key, offset)
-    output = File.open('decrypted.txt', 'w')
-    output.write(decrypted)
-    output.close
-    puts "Created file 'decrypted.txt' with key #{key} and offset #{offset}"
+    output_file = File.open(output, 'w')
+    output_file.write(decrypted)
+    output_file.close
+    puts "Created file '#{output.to_s} with key #{key} and offset #{offset}"
   end
+end
+
+if __FILE__ == $0
+  Decrypt.new.file_decrypt(ARGV[0], ARGV[1], ARGV[2], ARGV[3])
 end
