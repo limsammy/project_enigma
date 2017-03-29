@@ -4,6 +4,7 @@ GEM
     docile (1.1.5)
     json (2.0.3)
     minitest (5.10.1)
+    minitest-filesystem (1.2.0)
     simplecov (0.14.1)
       docile (~> 1.1.0)
       json (>= 1.8, < 3)
@@ -15,6 +16,7 @@ PLATFORMS
 
 DEPENDENCIES
   minitest
+  minitest-filesystem
   simplecov
 
 BUNDLED WITH
