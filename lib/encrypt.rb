@@ -21,13 +21,13 @@ class Encrypt
           encrypted_char = cipher.lookup('B', char, key, offset)
           char = encrypted_char
         when 1
-          encrypted_char = cipher.lookup_key('B', char, key, offset)
+          encrypted_char = cipher.lookup('B', char, key, offset)
           char = encrypted_char
         when 2
-          encrypted_char = cipher.lookup_key('C', char, key, offset)
+          encrypted_char = cipher.lookup('C', char, key, offset)
           char = encrypted_char
         when 3
-          encrypted_char = cipher.lookup_key('D', char, key, offset)
+          encrypted_char = cipher.lookup('D', char, key, offset)
           char = encrypted_char
         end
       end

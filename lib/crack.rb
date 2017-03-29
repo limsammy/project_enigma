@@ -52,7 +52,7 @@ class Crack
     output_file = File.open(output, 'w')
     output_file.write(cracked)
     output_file.close
-    puts "Created file 'cracked.txt'"
+    puts "Created file #{output.to_s}"
   end
 end
 
