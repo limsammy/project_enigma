@@ -2,6 +2,7 @@ require 'simplecov'
 SimpleCov.start
 require 'minitest/autorun'
 require 'minitest/pride'
+require 'minitest/filesystem'
 require './lib/encrypt'
 
 class EncryptTest < Minitest::Test
@@ -28,5 +29,13 @@ class EncryptTest < Minitest::Test
     message = 'hello world'
 
     assert_instance_of String, e.encrypt("hello world")
+  end
+
+  def test_file_encrypt_creates_file
+    e = Encrypt.new
+    e.file_encrypt('to_encrypt.txt', 'encrypted.txt')
+
+    assert_exists './to_encrypt.txt'
+    assert_exists './encrypted.txt'
   end
 end
