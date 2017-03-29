@@ -35,10 +35,10 @@ class Decrypt
     output_file = File.open(output, 'w')
     output_file.write(decrypted)
     output_file.close
-    puts "Created file '#{output.to_s} with key #{key} and offset #{offset}"
+    puts "Created file '#{output}' with key #{key} and offset #{offset}"
   end
 end
 
-if __FILE__ == $0
+if __FILE__ == $PROGRAM_NAME
   Decrypt.new.file_decrypt(ARGV[0], ARGV[1], ARGV[2], ARGV[3])
 end

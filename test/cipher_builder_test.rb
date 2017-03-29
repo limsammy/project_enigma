@@ -39,17 +39,10 @@ class CipherBuilderTest < Minitest::Test
     assert_equal 74 % 39, d_rotation
   end
 
-  def test_hash_keys_populated_w_charmap # delete later, pry accessor to check table
-    # skip
-    b = CipherBuilder.new
-
-    b.create_table('A', '03165', '0489')
-  end
-
   def test_chunk_method_returns_array
     c = CipherBuilder.new
 
-    assert_instance_of Array, c.chunk("Test message", 4)
+    assert_instance_of Array, c.chunk('Test message', 4)
   end
 
   def test_char_map_is_type_array

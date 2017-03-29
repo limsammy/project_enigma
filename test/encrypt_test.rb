@@ -28,7 +28,7 @@ class EncryptTest < Minitest::Test
     e = Encrypt.new
     message = 'hello world'
 
-    assert_instance_of String, e.encrypt("hello world")
+    assert_instance_of String, e.encrypt(message)
   end
 
   def test_file_encrypt_creates_file

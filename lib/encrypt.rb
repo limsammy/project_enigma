@@ -12,7 +12,7 @@ class Encrypt
     @offset   = OffsetGen.new.generate_offset(4)
   end
 
-  def encrypt(message, key=@key, offset=@offset)
+  def encrypt(message, key = @key, offset = @offset)
     cipher = CipherBuilder.new
     final = cipher.chunk(message, 4).map!.each do |chunk|
       chunk.map!.with_index do |char, index|
@@ -36,15 +36,15 @@ class Encrypt
   end
 
   def file_encrypt(input, output)
-    file = File.open(input, "r").read
-    encrypted = self.encrypt(file)
+    file = File.open(input, 'r').read
+    encrypted = encrypt(file)
     output_file = File.open(output, 'w')
     output_file.write(encrypted)
     output_file.close
-    puts "Created file #{output.to_s} with key #{@key} and offset #{@offset}"
+    puts "Created file #{output} with key #{@key} and offset #{@offset}"
   end
 end
 
-if __FILE__ == $0
+if __FILE__ == $PROGRAM_NAME
   Encrypt.new.file_encrypt(ARGV[0], ARGV[1])
 end

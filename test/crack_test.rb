@@ -38,7 +38,7 @@ class CrackTest < Minitest::Test
   def test_can_crack_message
     c = Crack.new
 
-    assert_equal "test..end..", c.crack('pi727ctw,cn')
+    assert_equal 'test..end..', c.crack('pi727ctw,cn')
   end
 
   def test_files_are_created
