@@ -44,4 +44,14 @@ class Crack
     message_rotation = (@char_map.index(encrypted_char)) - (@char_map.index(decrypted_char))
     message_rotation % @char_map.count
   end
+
+  def crack_file(filename)
+    file = File.open(filename, "r").read
+    file = file.chomp
+    cracked = self.crack(file)
+    output = File.open('cracked.txt', 'w')
+    output.write(cracked)
+    output.close
+    puts "Created file 'cracked.txt'"
+  end
 end
