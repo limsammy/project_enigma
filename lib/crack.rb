@@ -4,7 +4,7 @@ require_relative 'decrypt'
 require 'pry'
 
 class Crack
-  attr_reader :offset
+  attr_reader :offset, :char_map
 
   def initialize
     @char_map = CipherBuilder.new.gen_map
