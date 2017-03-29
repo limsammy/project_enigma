@@ -22,4 +22,11 @@ class EncryptTest < Minitest::Test
 
     assert_equal 4, e.offset.to_s.length
   end
+
+  def test_can_encrypt
+    e = Encrypt.new
+    message = 'hello world'
+
+    assert_instance_of String, e.encrypt("hello world")
+  end
 end
