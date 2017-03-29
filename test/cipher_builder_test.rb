@@ -36,7 +36,7 @@ class CipherBuilderTest < Minitest::Test
     b = CipherBuilder.new
     d_rotation = b.calculate_rotation('D', '03165', '0489')
 
-    assert_equal 74, d_rotation
+    assert_equal 74 % 39, d_rotation
   end
 
   def test_hash_keys_populated_w_charmap # delete later, pry accessor to check table
@@ -50,5 +50,17 @@ class CipherBuilderTest < Minitest::Test
     c = CipherBuilder.new
 
     assert_instance_of Array, c.chunk("Test message", 4)
+  end
+
+  def test_char_map_is_type_array
+    c = CipherBuilder.new
+
+    assert_instance_of Array, c.gen_map
+  end
+
+  def test_char_map_is_39_chars_long
+    c = CipherBuilder.new
+
+    assert_equal 39, c.gen_map.length
   end
 end

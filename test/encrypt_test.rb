@@ -22,22 +22,4 @@ class EncryptTest < Minitest::Test
 
     assert_equal 4, e.offset.to_s.length
   end
-
-  def test_char_map_is_39_chars_long
-    e = Encrypt.new
-
-    assert_equal 39, e.gen_map.length
-  end
-
-  def test_char_map_is_type_array
-    e = Encrypt.new
-
-    assert_instance_of Array, e.gen_map
-  end
-
-  def test_encrypt_accessor_for_pry
-    e = Encrypt.new("~/Users/sam/turing/1module/project_enigma/to_encrypt.txt")
-
-    assert e.file_input
-  end
 end

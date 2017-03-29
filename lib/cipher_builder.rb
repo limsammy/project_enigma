@@ -5,7 +5,7 @@ class CipherBuilder
   attr_reader :char_map, :final
 
   def initialize
-    @char_map = Encrypt.new.gen_map
+    @char_map = self.gen_map
   end
 
   def calculate_rotation(rotation_id, key, offset)
@@ -17,7 +17,6 @@ class CipherBuilder
       (key[2..3].to_i + offset[2].to_i) % @char_map.count
     elsif rotation_id == 'D'
       (key[3..4].to_i + offset[3].to_i) % @char_map.count
-      # binding.pry
     else
       puts "No rotation of type #{rotation} exists."
     end
@@ -26,7 +25,6 @@ class CipherBuilder
   def create_table(rotation_id, key, offset)
     keys = @char_map
     vals = @char_map.rotate(calculate_rotation(rotation_id, key, offset))
-    # binding.pry
     table = Hash[keys.zip(vals)]
     table
   end
@@ -61,5 +59,9 @@ class CipherBuilder
 
   def chunk(message, chunks)
     message.chars.each_slice(chunks).to_a
+  end
+
+  def gen_map
+    [*('a'..'z')] + [*('0'..'9')] + [' ', '.', ',']
   end
 end

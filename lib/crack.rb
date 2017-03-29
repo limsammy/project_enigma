@@ -7,7 +7,7 @@ class Crack
   attr_reader :offset
 
   def initialize
-    @char_map = Encrypt.new.gen_map
+    @char_map = CipherBuilder.new.gen_map
     @offset = OffsetGen.new.generate_offset
   end
 
@@ -18,19 +18,19 @@ class Crack
       when 0
         rotation = @char_map.index(char) - rotation(message, -4)
         decrypted_char = @char_map.rotate(rotation).shift
-        char = decrypted_char
+        final << decrypted_char
       when 1
         rotation = @char_map.index(char) - rotation(message, -3)
         decrypted_char = @char_map.rotate(rotation).shift
-        char = decrypted_char
+        final << decrypted_char
       when 2
         rotation = @char_map.index(char) - rotation(message, -2)
         decrypted_char = @char_map.rotate(rotation).shift
-        char = decrypted_char
+        final << decrypted_char
       when 3
         rotation = @char_map.index(char) - rotation(message, -1)
         decrypted_char = @char_map.rotate(rotation).shift
-        char = decrypted_char
+        final << decrypted_char
       end
     end
     final.join
@@ -43,6 +43,5 @@ class Crack
     decrypted_char = given[rotation_id-switch]
     message_rotation = (@char_map.index(encrypted_char)) - (@char_map.index(decrypted_char))
     message_rotation % @char_map.count
-    binding.pry
   end
 end
